@@ -8,12 +8,22 @@ public static class Arrays
     /// <returns>array of doubles that are the multiples of the supplied number</returns>
     public static double[] MultiplesOf(double number, int length)
     {
-        // TODO Problem 1 Start
-        // Remember: Using comments in your program, write down your process for solving this problem
-        // step by step before you write the code. The plan should be clear enough that it could
-        // be implemented by another person.
+        // First we need to create a array that that is the size of length, this will be the result array that we will return at the end of the function
+        // Next we create a loop that will loop through the array fromm 0 to length -1
+        // Then store the new value in the array using the calculations of number * the current index + 1, Index i = number * (i + 1)
+        // Finally return the result array they we created at the beginning of the function
+        
+        // step 1 create the result array
+        var result = new double[length];
 
-        return []; // replace this return statement with your own
+        // step 2: loop and fill the array with multiples
+        for (int i = 0; i < length; i++)
+        {
+            result[i] = number * (i + 1);
+        }
+
+        // Last step: return the result array
+        return result; 
     }
 
     /// <summary>
@@ -25,9 +35,23 @@ public static class Arrays
     /// </summary>
     public static void RotateListRight(List<int> data, int amount)
     {
-        // TODO Problem 2 Start
-        // Remember: Using comments in your program, write down your process for solving this problem
-        // step by step before you write the code. The plan should be clear enough that it could
-        // be implemented by another person.
+        // First we need to find the split of the list, data.Count - amount, this will be were the list will be split into to parts, the head and the tail
+        // Next we extract the tail from the list and store it in a new list called tail
+        // Then we have the head of the list, which is the first part of the original list
+        // Then we clear the original list and add the tail to the front of the list and then add the head to the end of the list
+
+        // step 1: find the split point
+        int splitPoint = data.Count - amount;
+
+        // step 2: extract the tail
+        List<int> tail = data.GetRange(splitPoint, amount);
+
+        // step 3: extract the head
+        List<int> head = data.GetRange(0, splitPoint);
+
+        // step 4: clear the original list and add the tail and head back in the correct order
+        data.Clear();
+        data.AddRange(tail);
+        data.AddRange(head);
     }
 }
